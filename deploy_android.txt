@@ -1,0 +1,123 @@
+PLAN DE IMPLEMENTACIÓN - APP ANDROID PARA CONTROL DE LEDS
+=========================================================
+
+DISPOSITIVO: Samsung Galaxy Z Fold4
+SISTEMA: Android 12+ con One UI
+
+REQUISITOS PREVIOS:
+==================
+- Android Studio instalado en PC
+- Samsung Galaxy Z Fold4 con modo desarrollador activado
+- Cable USB-C para conexión
+- Módulo HC-05 configurado y emparejado
+
+PASOS DE IMPLEMENTACIÓN:
+========================
+
+1. CONFIGURACIÓN DEL DISPOSITIVO:
+   - Ir a Configuración → Acerca del teléfono
+   - Tocar 7 veces "Número de compilación"
+   - Activar "Opciones de desarrollador"
+   - Habilitar "Depuración USB"
+   - Conectar teléfono al PC con cable USB-C
+
+2. CONFIGURACIÓN DE ANDROID STUDIO:
+   - Abrir Android Studio
+   - Crear nuevo proyecto: "Empty Activity"
+   - Nombre: "LED Controller"
+   - Package: com.example.ledcontroller
+   - API mínima: 21 (Android 5.0)
+   - Lenguaje: Java
+
+3. CONFIGURACIÓN DEL PROYECTO:
+   - Copiar MainActivity.java desde: /home/mmorana/IA/valen/android/led_controller/MainActivity.java
+     al directorio: app/src/main/java/com/example/ledcontroller/
+   - Copiar activity_main.xml desde: /home/mmorana/IA/valen/android/led_controller/activity_main.xml
+     al directorio: app/src/main/res/layout/
+   - Reemplazar AndroidManifest.xml con: /home/mmorana/IA/valen/android/led_controller/AndroidManifest.xml
+     en: app/src/main/
+
+4. CONFIGURACIÓN BLUETOOTH:
+   - Obtener MAC address del HC-05:
+     * Ir a Configuración → Bluetooth
+     * Buscar "LEDController" o "HC-05"
+     * Tocar ícono de configuración
+     * Anotar dirección MAC (formato: XX:XX:XX:XX:XX:XX)
+   
+   - Actualizar MainActivity.java:
+     * Cambiar DEVICE_ADDRESS por la MAC real del HC-05
+     * Línea 17: private static final String DEVICE_ADDRESS = "TU_MAC_AQUI";
+
+5. COMPILACIÓN Y INSTALACIÓN:
+   - En Android Studio: Build → Make Project
+   - Verificar que no hay errores
+   - Conectar Samsung Z Fold4 por USB
+   - Run → Run 'app' (o presionar Shift+F10)
+   - Seleccionar dispositivo Samsung Z Fold4
+   - Esperar instalación automática
+
+6. CONFIGURACIÓN DE PERMISOS:
+   - Al abrir la app por primera vez
+   - Permitir acceso a Bluetooth cuando se solicite
+   - Permitir acceso a ubicación (requerido para Bluetooth)
+
+7. EMPAREJAMIENTO BLUETOOTH:
+   - Ir a Configuración Android → Bluetooth
+   - Buscar dispositivos disponibles
+   - Seleccionar "LEDController" o "HC-05"
+   - Ingresar PIN: 1234
+   - Confirmar emparejamiento
+
+8. PRUEBAS DE FUNCIONAMIENTO:
+   - Abrir app "LED Controller"
+   - Tocar "Conectar Bluetooth"
+   - Verificar mensaje "Conectado"
+   - Probar botones:
+     * Rojo → LEDs deben ponerse rojos
+     * Verde → LEDs deben ponerse verdes
+     * Azul → LEDs deben ponerse azules
+     * Apagar → LEDs deben apagarse
+
+OPTIMIZACIÓN PARA Z FOLD4:
+==========================
+
+PANTALLA PLEGABLE:
+- La app funciona en ambas pantallas (interna y externa)
+- Se adapta automáticamente al cambio de orientación
+- Botones se redimensionan según el tamaño de pantalla
+
+CONFIGURACIÓN ADICIONAL (OPCIONAL):
+- Agregar soporte para pantalla dividida
+- Optimizar para modo tablet cuando está desplegado
+
+TROUBLESHOOTING ESPECÍFICO:
+===========================
+
+PROBLEMAS COMUNES:
+- "Error de conexión": Verificar que HC-05 esté encendido y emparejado
+- "Dispositivo no encontrado": Verificar MAC address en código
+- App no instala: Verificar depuración USB habilitada
+- Permisos denegados: Ir a Configuración → Apps → LED Controller → Permisos
+
+COMANDOS DE DEPURACIÓN:
+- Ver logs: Android Studio → Logcat
+- Reinstalar app: adb uninstall com.example.ledcontroller
+- Verificar dispositivos: adb devices
+
+CARACTERÍSTICAS Z FOLD4:
+- Pantalla externa: 6.2" (2316×904)
+- Pantalla interna: 7.6" (2176×1812)
+- La app se adapta automáticamente a ambas pantallas
+
+ARCHIVOS DEL PROYECTO:
+======================
+- MainActivity.java: /home/mmorana/IA/valen/android/led_controller/MainActivity.java
+- activity_main.xml: /home/mmorana/IA/valen/android/led_controller/activity_main.xml
+- AndroidManifest.xml: /home/mmorana/IA/valen/android/led_controller/AndroidManifest.xml
+
+¡IMPLEMENTACIÓN ANDROID COMPLETA!
+
+PRÓXIMOS PASOS:
+- Probar conexión con Arduino
+- Verificar control de LEDs
+- Personalizar colores si es necesario
