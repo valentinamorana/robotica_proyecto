@@ -1,2 +1,109 @@
-429: Too Many Requests
-For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).
+PLAN DE IMPLEMENTACIÓN - CONTROL DE LEDS WS2812B CON ARDUINO UNO
+================================================================
+
+COMPONENTES NECESARIOS:
+- Arduino Uno
+- Tira de LEDs WS2812B
+- Módulo Bluetooth HC-05
+- Fuente de alimentación 5V (si la tira tiene muchos LEDs)
+- Cables jumper
+- Resistencia 470Ω (opcional, para protección)
+- Capacitor 1000µF (opcional, para estabilizar alimentación)
+
+CIRCUITO ELECTRÓNICO:
+====================
+
+CONEXIONES TIRA LED WS2812B:
+- VCC (Rojo) → 5V Arduino (o fuente externa si >30 LEDs)
+- GND (Negro) → GND Arduino
+- DIN (Verde/Blanco) → Pin Digital 6 Arduino
+
+CONEXIONES MÓDULO HC-05:
+- VCC → 5V Arduino
+- GND → GND Arduino  
+- RX → Pin Digital 2 Arduino
+- TX → Pin Digital 3 Arduino
+
+DIAGRAMA CONEXIONES:
+                    Arduino Uno
+                   ┌─────────────┐
+                   │             │
+    HC-05 VCC ────→│ 5V          │
+    HC-05 GND ────→│ GND         │
+    HC-05 RX  ────→│ D2          │
+    HC-05 TX  ────→│ D3          │
+                   │             │
+    LED VCC   ────→│ 5V          │
+    LED GND   ────→│ GND         │
+    LED DIN   ────→│ D6          │
+                   │             │
+                   └─────────────┘
+
+PASOS DE IMPLEMENTACIÓN:
+========================
+
+1. PREPARACIÓN DEL ENTORNO:
+   - Instalar Arduino IDE
+   - Instalar librería FastLED: Sketch → Include Library → Manage Libraries → Buscar "FastLED"
+
+2. MONTAJE DEL CIRCUITO:
+   - Conectar la tira LED según el diagrama
+   - Conectar el módulo HC-05 según el diagrama
+   - Verificar todas las conexiones
+
+3. CONFIGURACIÓN DEL HC-05:
+   - Conectar HC-05 al Arduino temporalmente en pines 0,1
+   - Subir sketch vacío al Arduino
+   - Abrir Serial Monitor a 9600 baudios
+   - Enviar comandos AT:
+     * AT (debe responder OK)
+     * AT+NAME=LEDController
+     * AT+PSWD=1234
+
+4. CARGA DEL CÓDIGO:
+   - Abrir el archivo: /home/mmorana/IA/valen/arduino/ws2812b_control/ws2812b_control.ino
+   - Verificar configuración:
+     * NUM_LEDS = número real de LEDs en tu tira
+     * LED_PIN = 6
+   - Compilar y subir al Arduino
+
+5. PRUEBAS:
+   - Abrir Serial Monitor a 9600 baudios
+   - Verificar que no hay errores
+   - Probar comandos manualmente:
+     * Escribir "RED" → LEDs deben ponerse rojos
+     * Escribir "GREEN" → LEDs deben ponerse verdes
+     * Escribir "BLUE" → LEDs deben ponerse azules
+     * Escribir "OFF" → LEDs deben apagarse
+
+6. CONEXIÓN BLUETOOTH:
+   - Emparejar dispositivo Android con HC-05
+   - PIN por defecto: 1234
+   - Anotar la dirección MAC del HC-05
+   - Actualizar DEVICE_ADDRESS en el código Android
+
+CONSIDERACIONES IMPORTANTES:
+============================
+
+ALIMENTACIÓN:
+- Si tienes más de 30 LEDs, usa fuente externa de 5V
+- Calcula: 60mA por LED × número de LEDs
+- Conecta GND de fuente externa con GND de Arduino
+
+PROTECCIÓN:
+- Resistencia 470Ω entre pin 6 y DIN del LED (opcional)
+- Capacitor 1000µF entre VCC y GND de la tira (opcional)
+
+TROUBLESHOOTING:
+- Si LEDs no encienden: verificar alimentación y conexión DIN
+- Si Bluetooth no conecta: verificar emparejamiento y MAC address
+- Si colores incorrectos: cambiar COLOR_ORDER de GRB a RGB
+
+COMANDOS DISPONIBLES:
+- "RED" - Todos los LEDs en rojo
+- "GREEN" - Todos los LEDs en verde  
+- "BLUE" - Todos los LEDs en azul
+- "OFF" - Apagar todos los LEDs
+- "RGB:255,0,0" - Color personalizado (R,G,B)
+
+¡IMPLEMENTACIÓN COMPLETA!
