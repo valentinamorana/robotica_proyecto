@@ -21,21 +21,15 @@ PASOS DE IMPLEMENTACIÓN:
    - Habilitar "Depuración USB"
    - Conectar teléfono al PC con cable USB-C
 
-2. CONFIGURACIÓN DE ANDROID STUDIO:
-   - Abrir Android Studio
-   - Crear nuevo proyecto: "Empty Activity"
-   - Nombre: "LED Controller"
-   - Package: com.example.ledcontroller
-   - API mínima: 21 (Android 5.0)
-   - Lenguaje: Java
+2. ABRIR EL PROYECTO:
+   - Abrir Android Studio → File → Open → carpeta AndroidStudio/LEDController del repositorio
+   - Es un proyecto completo (Gradle, Java, API mínima 26 / Android 8.0): no hace falta crear uno nuevo
+   - Esperar a que termine la sincronización de Gradle
 
-3. CONFIGURACIÓN DEL PROYECTO:
-   - Copiar MainActivity.java desde: MainActivity.java
-     al directorio: app/src/main/java/com/example/ledcontroller/
-   - Copiar activity_main.xml desde: activity_main.xml
-     al directorio: app/src/main/res/layout/
-   - Reemplazar AndroidManifest.xml con: AndroidManifest.xml
-     en: app/src/main/
+3. ARCHIVOS DEL PROYECTO (ya incluidos):
+   - Código: app/src/main/java/com/example/ledcontroller/MainActivity.java
+   - Layout: app/src/main/res/layout/activity_main.xml
+   - Manifiesto: app/src/main/AndroidManifest.xml
 
 4. CONFIGURACIÓN BLUETOOTH:
    - Obtener MAC address del HC-05:
@@ -45,8 +39,8 @@ PASOS DE IMPLEMENTACIÓN:
      * Anotar dirección MAC (formato: XX:XX:XX:XX:XX:XX)
    
    - Actualizar MainActivity.java:
-     * Cambiar DEVICE_ADDRESS por la MAC real del HC-05
-     * Línea 17: private static final String DEVICE_ADDRESS = "TU_MAC_AQUI";
+     * Cambiar DEVICE_ADDRESS por la MAC real del HC-05 (archivo MainActivity.java)
+     * Buscar: private static final String DEVICE_ADDRESS = "XX:XX:XX:XX:XX:XX";
 
 5. COMPILACIÓN Y INSTALACIÓN:
    - En Android Studio: Build → Make Project
@@ -111,9 +105,9 @@ CARACTERÍSTICAS Z FOLD4:
 
 ARCHIVOS DEL PROYECTO:
 ======================
-- MainActivity.java: MainActivity.java
-- activity_main.xml: activity_main.xml
-- AndroidManifest.xml: AndroidManifest.xml
+- MainActivity.java: AndroidStudio/LEDController/app/src/main/java/com/example/ledcontroller/MainActivity.java
+- activity_main.xml: AndroidStudio/LEDController/app/src/main/res/layout/activity_main.xml
+- AndroidManifest.xml: AndroidStudio/LEDController/app/src/main/AndroidManifest.xml
 
 ¡IMPLEMENTACIÓN ANDROID COMPLETA!
 

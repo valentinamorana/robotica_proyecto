@@ -61,7 +61,7 @@ PASOS DE IMPLEMENTACIÓN:
      * AT+PSWD=1234
 
 4. CARGA DEL CÓDIGO:
-   - Abrir el archivo: ws2812b_control.ino
+   - Abrir el archivo: Arduino/Arduino_all_colors_V2/Arduino_all_colors_V2.ino
    - Verificar configuración:
      * NUM_LEDS = número real de LEDs en tu tira
      * LED_PIN = 6
