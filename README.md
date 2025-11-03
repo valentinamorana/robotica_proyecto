@@ -137,6 +137,10 @@ Ejemplo desde el Monitor Serie: `CENTER` → `GREEN` → `BRIGHT:120`.
 
 ---
 
+## Documentación
+
+- **Tesis (PDF):** [Trabajo Final de Robótica](docs/Tesis_Morana_Valentina.pdf). Incluye la investigación sobre mapping drones y el desarrollo completo del prototipo.
+
 ## Marco teórico
 
 El proyecto nace de una investigación sobre *mapping drones* y shows de luces autónomos: robótica aérea, swarm robotics, IoT, IA aplicada a la planificación y protocolos de seguridad. El prototipo traslada esos principios a una escala educativa y de escritorio.
